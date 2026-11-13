@@ -24,10 +24,10 @@ on:
 
 jobs:
   build-lkm:
+    if: false
     uses: ./.github/workflows/build-lkm.yml
     secrets: inherit
   build-user_scanner:
-    needs: build-lkm
     strategy:
       matrix:
         include:
@@ -39,7 +39,6 @@ jobs:
       os: ${{ matrix.os }}
 
   build-ksud:
-    needs: build-lkm
     strategy:
       matrix:
         include:
